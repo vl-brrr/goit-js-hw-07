@@ -36,12 +36,17 @@ function handleClick(event) {
     <img src="${source}" >`);
 
   instance.show();
-  if (instance.show()) {
-    document.addEventListener("keydown", (event) => {
-      if (event.code !== "Escape") {
-        return;
-      }
-      instance.close();
-    });
+
+  function closeOnEsc(event) {
+    if (event.code !== "Escape") {
+      return;
+    }
+    instance.close();
+  }
+
+  if (instance.visible()) {
+    document.addEventListener("keydown", closeOnEsc);
+  } else {
+    document.removeEventListener("keydown", closeOnEsc);
   }
 }

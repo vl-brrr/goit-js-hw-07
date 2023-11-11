@@ -18,18 +18,7 @@ function createMarkup(arr) {
     .join("");
 }
 
-gallery.addEventListener("click", handleClick);
-
-function handleClick(event) {
-  event.preventDefault();
-  if (event.target === event.currentTarget) {
-    return;
-  }
-
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-
-  lightbox.open();
-}
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
